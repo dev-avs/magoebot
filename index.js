@@ -36,6 +36,10 @@ client.on("messageCreate", async (message) => {
   await message.react("7️⃣");
   await message.react("🥭");
   await message.react("🤖");
+  await reply.react("6️⃣");
+  await reply.react("7️⃣");
+  await reply.react("🥭");
+  await reply.react("🤖");
 });
 
 client.login(process.env.TOKEN);
