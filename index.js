@@ -14,7 +14,7 @@ client.once("clientReady", () => {
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
-  await message.channel.send("67");
+  await message.channel.send("My name is mangoes**bot** 67 is so funny!!");
 });
 
 client.login(process.env.TOKEN);
