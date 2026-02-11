@@ -14,12 +14,12 @@ client.once("ready", () => {
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 
-  const reply = await message.reply("My name is mangoes**bot** 67 is so funny!!");
+  await message.reply("My name is mangoes**bot** 67 is so funny!!");
 
-  await reply.react("6️⃣");
-  await reply.react("7️⃣");
-  await reply.react("🥭");
-  await reply.react("🤖");
+  await message.react("6️⃣");
+  await message.react("7️⃣");
+  await message.react("🥭");
+  await message.react("🤖");
 });
 
 client.login(process.env.TOKEN);
