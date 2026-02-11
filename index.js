@@ -7,12 +7,28 @@ const client = new Client({
   ]
 });
 
+let active = true;
+
 client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
+
+  if (message.content === "mg;Stop") {
+    active = false;
+    await message.reply("Bot stopped.");
+    return;
+  }
+
+  if (message.content === "mg;Start") {
+    active = true;
+    await message.reply("Bot started.");
+    return;
+  }
+
+  if (!active) return;
 
   await message.reply("My name is mangoes**bot** 67 is so funny!!");
 
