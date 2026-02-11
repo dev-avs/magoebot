@@ -7,7 +7,7 @@ const client = new Client({
   ]
 });
 
-let active = true;
+const stoppedChannels = new Set();
 
 client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
@@ -17,18 +17,18 @@ client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 
   if (message.content === "mg;Stop") {
-    active = false;
-    await message.reply("Bot stopped.");
+    stoppedChannels.add(message.channel.id);
+    await message.reply("Bot stopped in this channel.");
     return;
   }
 
   if (message.content === "mg;Start") {
-    active = true;
-    await message.reply("Bot started.");
+    stoppedChannels.delete(message.channel.id);
+    await message.reply("Bot started in this channel.");
     return;
   }
 
-  if (!active) return;
+  if (stoppedChannels.has(message.channel.id)) return;
 
   await message.reply("My name is mangoes**bot** 67 is so funny!!");
 
